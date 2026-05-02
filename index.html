@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senior Security Automation Engineer | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
+            --bg: #030303;
             --accent: #00ff41;
             --accent-pink: #ff0066;
-            --text: #e0e0e0;
-            --card-bg: #111111;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --card-bg: rgba(20, 20, 20, 0.8);
+            --border: rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -22,19 +24,28 @@
 
         body {
             background-color: var(--bg);
-            color: var(--text);
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Matrix Rain Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.15;
         }
 
-        /* Header / Hero */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
         header {
             height: 100vh;
             display: flex;
@@ -42,98 +53,135 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, #111 0%, #050505 100%);
+            padding-bottom: 50px;
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
+            font-weight: 800;
             color: var(--accent);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             letter-spacing: -2px;
+            line-height: 1.1;
         }
 
         .headline {
             font-family: 'Fira Code', monospace;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--accent-pink);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            font-weight: 500;
         }
 
-        /* Matrix Rain Background Simulation */
-        #bg-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.1;
+        .hero-desc {
+            max-width: 700px;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin: 0 auto;
+            line-height: 1.8;
         }
 
-        /* Projects Grid */
+        /* Sections Styling */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--text-main);
+            letter-spacing: -1px;
+        }
+
+        /* Projects Grid - High Precision */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 100px 0;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
 
         .project-card {
             background: var(--card-bg);
-            border: 1px solid #222;
-            padding: 30px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
             border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 255, 65, 0.08);
+            background: rgba(30, 30, 30, 0.9);
         }
 
         .project-card h3 {
             color: var(--accent);
+            font-size: 1.6rem;
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .project-card p {
-            font-size: 0.9rem;
-            color: #aaa;
-            margin-bottom: 20px;
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .tags-container {
+            margin-bottom: 25px;
         }
 
         .tag {
             display: inline-block;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-family: 'Fira Code', monospace;
-            background: #1a1a1a;
+            background: rgba(255, 0, 102, 0.1);
             color: var(--accent-pink);
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-right: 5px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            margin-right: 8px;
+            font-weight: 500;
         }
 
-        /* Skills */
-        .skills-section {
-            padding: 100px 0;
-            text-align: center;
+        .btn-link {
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
         }
 
+        .btn-link:hover {
+            gap: 12px;
+            text-decoration: underline;
+        }
+
+        /* Skills - Modern Badges */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
-            margin-top: 40px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .skill-badge {
-            border: 1px solid #333;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 700;
+            background: #111;
+            border: 1px solid var(--border);
+            padding: 12px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
             transition: 0.3s;
         }
 
@@ -141,122 +189,132 @@
             background: var(--accent);
             color: #000;
             border-color: var(--accent);
+            transform: scale(1.05);
         }
 
         footer {
-            padding: 50px 0;
+            padding: 80px 0;
             text-align: center;
-            border-top: 1px solid #111;
-            color: #555;
-            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            color: #444;
+            font-family: 'Fira Code', monospace;
         }
 
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
+        /* Responsiveness */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
+            h1 { font-size: 2.8rem; }
+            .container { padding: 0 25px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            section { padding: 80px 0; }
         }
     </style>
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
 
-    <header>
-        <div class="container">
-            <h1 id="typewriter">Senior Security Automation Engineer</h1>
-            <p class="headline">> Python | TypeScript | Pentesting | Automation</p>
-            <p style="max-width: 600px; color: #888;">Transforming complex business logic into automated, secure, and high-performance architectures.</p>
-        </div>
-    </header>
-
     <div class="container">
+        <header>
+            <h1>Security Automation<br><span style="color: #fff;">Architect</span></h1>
+            <p class="headline">> Python | TypeScript | Pentesting | Automation</p>
+            <p class="hero-desc">Transforming complex business logic into automated, secure, and high-performance architectures. Specialized in stealth security frameworks and enterprise automation.</p>
+        </header>
+
         <section id="projects">
-            <h2 style="font-size: 2.5rem; text-align: center;">Featured Projects</h2>
+            <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <!-- 1 -->
+                <!-- Project 1 -->
                 <div class="project-card">
-                    <div class="tag">Architecture</div>
-                    <h3>FIKHA CODE Suite</h3>
-                    <p>Professional multi-threaded validation and automation suite with advanced GUI orchestration.</p>
-                    <a href="#">View on GitHub →</a>
+                    <div>
+                        <div class="tags-container"><span class="tag">Architecture</span><span class="tag">Python</span></div>
+                        <h3>FIKHA CODE Suite</h3>
+                        <p>Professional multi-threaded validation and automation suite with advanced GUI orchestration and real-time monitoring.</p>
+                    </div>
+                    <a href="#" class="btn-link">Explore Code Repository →</a>
                 </div>
-                <!-- 2 -->
+                <!-- Project 2 -->
                 <div class="project-card">
-                    <div class="tag">Security</div>
-                    <h3>Aegis Framework</h3>
-                    <p>Unified stealth penetration testing framework for automated vulnerability discovery.</p>
-                    <a href="#">View on GitHub →</a>
+                    <div>
+                        <div class="tags-container"><span class="tag">Cybersecurity</span><span class="tag">Stealth</span></div>
+                        <h3>Aegis Framework</h3>
+                        <p>Unified stealth penetration testing framework for automated discovery of critical vulnerabilities (LFI, SQLi, HPP).</p>
+                    </div>
+                    <a href="#" class="btn-link">Explore Code Repository →</a>
                 </div>
-                <!-- 3 -->
+                <!-- Project 3 -->
                 <div class="project-card">
-                    <div class="tag">Full-Stack</div>
-                    <h3>WA Marketing Engine</h3>
-                    <p>Scalable marketing automation platform built with Node.js, TypeScript, and Next.js.</p>
-                    <a href="#">View on GitHub →</a>
+                    <div>
+                        <div class="tags-container"><span class="tag">TypeScript</span><span class="tag">Node.js</span></div>
+                        <h3>Marketing Engine</h3>
+                        <p>Full-stack automation platform built with modern TypeScript, featuring scalable job scheduling and API integration.</p>
+                    </div>
+                    <a href="#" class="btn-link">Explore Code Repository →</a>
                 </div>
-                <!-- 4 -->
+                <!-- Project 4 -->
                 <div class="project-card">
-                    <div class="tag">Automation</div>
-                    <h3>OSHA VoIP Framework</h3>
-                    <p>Advanced GUI-based orchestration tool for managing multiple VoIP instances simultaneously.</p>
-                    <a href="#">View on GitHub →</a>
+                    <div>
+                        <div class="tags-container"><span class="tag">Automation</span><span class="tag">VoIP</span></div>
+                        <h3>OSHA VoIP Bot</h3>
+                        <p>Advanced GUI orchestration tool for orchestrating 100+ simultaneous VoIP instances with reactive logic.</p>
+                    </div>
+                    <a href="#" class="btn-link">Explore Code Repository →</a>
                 </div>
-                <!-- 5 -->
+                <!-- Project 5 -->
                 <div class="project-card">
-                    <div class="tag">Business</div>
-                    <h3>CRM Optimization</h3>
-                    <p>Financial data refactoring and backend optimization for enterprise-level CRM systems.</p>
-                    <a href="#">View on GitHub →</a>
+                    <div>
+                        <div class="tags-container"><span class="tag">Finance</span><span class="tag">CRM</span></div>
+                        <h3>System Optimization</h3>
+                        <p>Enterprise-level CRM refactoring engine focused on financial data integrity and performance tuning.</p>
+                    </div>
+                    <a href="#" class="btn-link">Explore Code Repository →</a>
                 </div>
-                <!-- 6 -->
+                <!-- Project 6 -->
                 <div class="project-card">
-                    <div class="tag">Tools</div>
-                    <h3>VS Code Extension</h3>
-                    <p>Custom security assistant extension for real-time vulnerability detection during coding.</p>
-                    <a href="#">View on GitHub →</a>
+                    <div>
+                        <div class="tags-container"><span class="tag">Tools</span><span class="tag">VS Code</span></div>
+                        <h3>Security Assistant</h3>
+                        <p>Developer-focused VS Code extension for real-time identification of security pitfalls and credential leaks.</p>
+                    </div>
+                    <a href="#" class="btn-link">Explore Code Repository →</a>
                 </div>
             </div>
         </section>
 
         <section class="skills-section">
-            <h2>Technical Arsenal</h2>
+            <h2 class="section-title">Technical Arsenal</h2>
             <div class="skills-container">
                 <div class="skill-badge">Python</div>
                 <div class="skill-badge">TypeScript</div>
                 <div class="skill-badge">Node.js</div>
                 <div class="skill-badge">Next.js</div>
                 <div class="skill-badge">Cybersecurity</div>
+                <div class="skill-badge">Penetration Testing</div>
                 <div class="skill-badge">Automation</div>
                 <div class="skill-badge">SQL</div>
-                <div class="skill-badge">Linux</div>
+                <div class="skill-badge">DevSecOps</div>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>© 2026 Developed with Passion. All Rights Reserved.</p>
+        <p>// Built with Precision by [Your Name] // 2026</p>
     </footer>
 
     <script>
-        // Matrix Background Effect
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        const fontSize = 16;
+        const letters = "0101010101010101";
+        const fontSize = 14;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
 
         function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillStyle = "rgba(3, 3, 3, 0.05)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#0f0";
-            ctx.font = fontSize + "px arial";
+            ctx.fillStyle = "#00ff41";
+            ctx.font = fontSize + "px 'Fira Code'";
 
             for (let i = 0; i < drops.length; i++) {
                 const text = letters[Math.floor(Math.random() * letters.length)];
@@ -265,7 +323,11 @@
                 drops[i]++;
             }
         }
-        setInterval(draw, 33);
+        setInterval(draw, 35);
+        window.onresize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
     </script>
 </body>
 </html>
